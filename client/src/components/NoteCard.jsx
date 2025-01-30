@@ -23,10 +23,14 @@ const NoteCard = ({ note }) => {
 		e.stopPropagation();
 
 		try {
+			const token = localStorage.getItem("jwt");
+
 			await axios.delete(
 				`https://organizeme-7l2v.onrender.com/api/notes/${note._id}`,
 				{
-					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
 				}
 			);
 

@@ -24,13 +24,24 @@ const EditNotePopup = ({ toggleEditForm, note }) => {
 		}
 
 		try {
+			const token = localStorage.getItem("jwt");
+
+			if (!token) {
+				setError("Unauthorized. Please login again.");
+				return;
+			}
+
 			const { data } = await axios.patch(
 				`https://organizeme-7l2v.onrender.com/api/notes/${note._id}`,
 				{
 					title,
 					content,
 				},
-				{ withCredentials: true }
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 
 			dispatch({ type: "UPDATE_NOTE", payload: data.note });

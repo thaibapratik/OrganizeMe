@@ -21,10 +21,13 @@ const TodoCard = ({ todo, toggleTaskCompletion }) => {
 
 	const handleDeleteButton = async () => {
 		try {
+			const token = localStorage.getItem("jwt");
 			await axios.delete(
 				`https://organizeme-7l2v.onrender.com/api/todos/${_id}`,
 				{
-					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
 				}
 			);
 

@@ -48,6 +48,13 @@ const EditTodoPopup = ({
 		}
 
 		try {
+			const token = localStorage.getItem("jwt");
+
+			if (!token) {
+				setError("Unauthorized. Please login again.");
+				return;
+			}
+
 			const { data } = await axios.patch(
 				`https://organizeme-7l2v.onrender.com/api/todos/${id}`,
 				{
@@ -55,7 +62,7 @@ const EditTodoPopup = ({
 					priority,
 					date,
 				},
-				{ withCredentials: true }
+				{ headers: `Bearer ${token}` }
 			);
 
 			dispatch({

@@ -30,6 +30,12 @@ const AddTodoPopup = ({ toggleAddForm }) => {
 		}
 
 		try {
+			const token = localStorage.getItem("jwt");
+
+			if (!token) {
+				setError("Unauthorized. Please login again.");
+				return;
+			}
 			const { data } = await axios.post(
 				"https://organizeme-7l2v.onrender.com/api/todos",
 				{
@@ -37,7 +43,11 @@ const AddTodoPopup = ({ toggleAddForm }) => {
 					priority,
 					date,
 				},
-				{ withCredentials: true }
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 
 			dispatch({ type: "CREATE_TODO", payload: data.todo });

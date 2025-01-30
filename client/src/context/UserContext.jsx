@@ -24,9 +24,14 @@ export const UserContextProvider = ({ children }) => {
 	useEffect(() => {
 		const checkAuth = async () => {
 			try {
+				const token = localStorage.getItem("jwt");
 				const response = await axios.get(
 					"https://organizeme-7l2v.onrender.com/api/users/check-auth",
-					{ withCredentials: true }
+					{
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}
 				);
 				// console.log(response.data);
 				if (response.data.success) {

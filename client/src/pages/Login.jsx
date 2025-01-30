@@ -35,9 +35,10 @@ const Login = () => {
 		try {
 			const response = await axios.post(
 				"https://organizeme-7l2v.onrender.com/api/users/login",
-				{ email, password },
-				{ withCredentials: true }
+				{ email, password }
 			);
+
+			localStorage.setItem("jwt", response.data.token);
 
 			dispatch({ type: "LOGIN", payload: response.data });
 

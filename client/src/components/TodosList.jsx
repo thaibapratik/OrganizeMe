@@ -12,11 +12,16 @@ const TodosList = ({ toggleAddForm, showAll = false }) => {
 		useTodoContext();
 
 	const toggleTaskCompletion = async (id, status) => {
+		const token = localStorage.getItem("jwt");
 		try {
 			const { data } = await axios.patch(
 				`https://organizeme-7l2v.onrender.com/api/todos/${id}`,
 				{ status: status === "completed" ? "pending" : "completed" },
-				{ withCredentials: true }
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 
 			dispatch({

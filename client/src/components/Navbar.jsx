@@ -16,11 +16,7 @@ const Navbar = () => {
 	const handleLogout = (e) => {
 		e.preventDefault();
 		try {
-			axios.post(
-				"https://organizeme-7l2v.onrender.com/api/users/logout",
-				{},
-				{ withCredentials: true }
-			);
+			localStorage.removeItem("jwt");
 			userDispatch({ type: "LOGOUT" });
 			todoDispatch({ type: "CLEAR_TODOS" });
 			noteDispatch({ type: "CLEAR_NOTES" });

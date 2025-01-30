@@ -84,9 +84,14 @@ export const TodoContextProvider = ({ children }) => {
 		setIsLoading(true);
 		setError(null);
 		try {
+			const token = localStorage.getItem("jwt");
 			const { data } = await axios.get(
 				"https://organizeme-7l2v.onrender.com/api/todos",
-				{ withCredentials: true }
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 			dispatch({ type: "SET_TODOS", payload: data.todos });
 		} catch (error) {

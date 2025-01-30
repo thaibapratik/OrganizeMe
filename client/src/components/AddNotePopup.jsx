@@ -24,13 +24,23 @@ const AddNotePopup = ({ toggleAddForm }) => {
 		}
 
 		try {
+			const token = localStorage.getItem("jwt");
+
+			if (!token) {
+				setError("Unauthorized. Please login again.");
+				return;
+			}
 			const { data } = await axios.post(
 				"https://organizeme-7l2v.onrender.com/api/notes",
 				{
 					title,
 					content,
 				},
-				{ withCredentials: true }
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 
 			dispatch({ type: "CREATE_NOTE", payload: data.note });

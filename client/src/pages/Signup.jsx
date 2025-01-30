@@ -35,9 +35,11 @@ const Signup = () => {
 			setError(null);
 			const response = await axios.post(
 				"https://organizeme-7l2v.onrender.com/api/users/signup",
-				{ name, email, password },
-				{ withCredentials: true }
+				{ name, email, password }
 			);
+
+			localStorage.setItem("jwt", response.data.token);
+
 			dispatch({ type: "LOGIN", payload: response.data.user });
 
 			await fetchTodos();

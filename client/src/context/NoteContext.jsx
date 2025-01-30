@@ -53,12 +53,15 @@ export const NoteContextProvider = ({ children }) => {
 
 	const fetchNotes = async () => {
 		try {
+			const token = localStorage.getItem("jwt");
 			setIsLoading(true);
 			setError(false);
 			const { data } = await axios.get(
 				"https://organizeme-7l2v.onrender.com/api/notes",
 				{
-					withCredentials: true,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
 				}
 			);
 
