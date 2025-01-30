@@ -29,11 +29,13 @@ const EditTodoPopup = ({
 	const [priority, setPriority] = useState(oldPriority);
 	const [date, setDate] = useState(oldDate ? oldDate.split("T")[0] : "");
 	const [error, setError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const { dispatch } = useTodoContext(TodoContext);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setIsLoading(true);
 
 		if (!task.trim()) {
 			setError("Task is required");
@@ -66,6 +68,8 @@ const EditTodoPopup = ({
 		} catch (error) {
 			console.error("Edit error:", error.response?.data);
 			setError(error.response?.data?.message || "An error occurred");
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
@@ -106,7 +110,11 @@ const EditTodoPopup = ({
 					</div>
 					{error && <p className="error">{error}</p>}{" "}
 					<div className="form-actions">
-						<button type="submit" className="btn-submit">
+						<button
+							type="submit"
+							className="btn-submit"
+							disabled={isLoading}
+						>
 							Edit Todo
 						</button>
 						<button

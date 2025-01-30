@@ -5,6 +5,7 @@ import { useNoteContext } from "../hooks/useNoteContext";
 import { NoteContext } from "../context/NoteContext";
 import { useState } from "react";
 import EditNotePopup from "./EditNotePopup";
+import { notify } from "./EditTodoPopup";
 
 const NoteCard = ({ note }) => {
 	const { dispatch } = useNoteContext();
@@ -30,6 +31,7 @@ const NoteCard = ({ note }) => {
 			);
 
 			dispatch({ type: "DELETE_NOTE", payload: note });
+			notify("Note Deleted Successfully");
 		} catch (error) {
 			console.log(error);
 		}

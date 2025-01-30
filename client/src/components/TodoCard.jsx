@@ -5,7 +5,7 @@ import axios from "axios";
 import { useTodoContext } from "../hooks/useTodoContext";
 import { TodoContext } from "../context/TodoContext";
 import { useState } from "react";
-import EditTodoPopup from "./EditTodoPopup";
+import EditTodoPopup, { notify } from "./EditTodoPopup";
 
 const TodoCard = ({ todo, toggleTaskCompletion }) => {
 	const { _id, task, status, date, createdAt, priority } = todo;
@@ -29,6 +29,7 @@ const TodoCard = ({ todo, toggleTaskCompletion }) => {
 			);
 
 			dispatch({ type: "DELETE_TODO", payload: todo });
+			notify("Todo Deleted Successfully");
 		} catch (error) {
 			console.log(error);
 		}

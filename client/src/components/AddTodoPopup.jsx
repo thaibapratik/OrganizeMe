@@ -9,11 +9,13 @@ const AddTodoPopup = ({ toggleAddForm }) => {
 	const [priority, setPriority] = useState("medium");
 	const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
 	const [error, setError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const { dispatch } = useTodoContext(TodoContext);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setIsLoading(true);
 
 		setError("");
 
@@ -44,6 +46,8 @@ const AddTodoPopup = ({ toggleAddForm }) => {
 			toggleAddForm();
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
@@ -89,7 +93,11 @@ const AddTodoPopup = ({ toggleAddForm }) => {
 					{error && <p>{error}</p>}
 
 					<div className="form-actions">
-						<button type="submit" className="btn-submit">
+						<button
+							type="submit"
+							className="btn-submit"
+							disabled={isLoading}
+						>
 							Add Todo
 						</button>
 						<button
