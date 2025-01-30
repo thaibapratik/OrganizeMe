@@ -25,7 +25,7 @@ const EditNotePopup = ({ toggleEditForm, note }) => {
 
 		try {
 			const { data } = await axios.patch(
-				`http://localhost:4000/api/notes/${note._id}`,
+				`https://organizeme-7l2v.onrender.com/api/notes/${note._id}`,
 				{
 					title,
 					content,

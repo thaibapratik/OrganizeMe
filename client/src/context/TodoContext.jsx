@@ -85,7 +85,7 @@ export const TodoContextProvider = ({ children }) => {
 		setError(null);
 		try {
 			const { data } = await axios.get(
-				"http://localhost:4000/api/todos",
+				"https://organizeme-7l2v.onrender.com/api/todos",
 				{ withCredentials: true }
 			);
 			dispatch({ type: "SET_TODOS", payload: data.todos });

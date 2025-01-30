@@ -21,9 +21,12 @@ const TodoCard = ({ todo, toggleTaskCompletion }) => {
 
 	const handleDeleteButton = async () => {
 		try {
-			await axios.delete(`http://localhost:4000/api/todos/${_id}`, {
-				withCredentials: true,
-			});
+			await axios.delete(
+				`https://organizeme-7l2v.onrender.com/api/todos/${_id}`,
+				{
+					withCredentials: true,
+				}
+			);
 
 			dispatch({ type: "DELETE_TODO", payload: todo });
 		} catch (error) {

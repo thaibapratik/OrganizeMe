@@ -34,7 +34,7 @@ const Signup = () => {
 			setIsLoading(true);
 			setError(null);
 			const response = await axios.post(
-				"http://localhost:4000/api/users/signup",
+				"https://organizeme-7l2v.onrender.com/api/users/signup",
 				{ name, email, password },
 				{ withCredentials: true }
 			);

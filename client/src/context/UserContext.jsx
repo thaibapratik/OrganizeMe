@@ -25,7 +25,7 @@ export const UserContextProvider = ({ children }) => {
 		const checkAuth = async () => {
 			try {
 				const response = await axios.get(
-					"http://localhost:4000/api/users/check-auth",
+					"https://organizeme-7l2v.onrender.com/api/users/check-auth",
 					{ withCredentials: true }
 				);
 				// console.log(response.data);

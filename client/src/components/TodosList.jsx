@@ -14,7 +14,7 @@ const TodosList = ({ toggleAddForm, showAll = false }) => {
 	const toggleTaskCompletion = async (id, status) => {
 		try {
 			const { data } = await axios.patch(
-				`http://localhost:4000/api/todos/${id}`,
+				`https://organizeme-7l2v.onrender.com/api/todos/${id}`,
 				{ status: status === "completed" ? "pending" : "completed" },
 				{ withCredentials: true }
 			);

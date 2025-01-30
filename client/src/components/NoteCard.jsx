@@ -22,9 +22,12 @@ const NoteCard = ({ note }) => {
 		e.stopPropagation();
 
 		try {
-			await axios.delete(`http://localhost:4000/api/notes/${note._id}`, {
-				withCredentials: true,
-			});
+			await axios.delete(
+				`https://organizeme-7l2v.onrender.com/api/notes/${note._id}`,
+				{
+					withCredentials: true,
+				}
+			);
 
 			dispatch({ type: "DELETE_NOTE", payload: note });
 		} catch (error) {

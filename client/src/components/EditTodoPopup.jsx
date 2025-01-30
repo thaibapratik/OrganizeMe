@@ -47,7 +47,7 @@ const EditTodoPopup = ({
 
 		try {
 			const { data } = await axios.patch(
-				`http://localhost:4000/api/todos/${id}`,
+				`https://organizeme-7l2v.onrender.com/api/todos/${id}`,
 				{
 					task,
 					priority,

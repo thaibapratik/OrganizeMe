@@ -56,7 +56,7 @@ export const NoteContextProvider = ({ children }) => {
 			setIsLoading(true);
 			setError(false);
 			const { data } = await axios.get(
-				"http://localhost:4000/api/notes",
+				"https://organizeme-7l2v.onrender.com/api/notes",
 				{
 					withCredentials: true,
 				}

@@ -1331,6 +1331,73 @@ textarea {
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.not-found {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	text-align: center;
+}
+
+.not-found-title {
+	font-size: 8rem;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.2);
+	letter-spacing: 5px;
+}
+
+.not-found-message {
+	font-size: 1.5rem;
+	margin: 10px 0;
+	color: #b3b3b3;
+}
+
+.not-found-link {
+	display: inline-block;
+	padding: 12px 24px;
+	background: linear-gradient(to right, #00e6e6, #0077ff);
+	color: #000;
+	font-size: 1rem;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 25px;
+	transition: all 0.3s ease-in-out;
+}
+
+.not-found-link:hover {
+	background: linear-gradient(to right, #0077ff, #00e6e6);
+	transform: scale(1.05);
+}
+
+/* Login Button */
+.button-login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 12px 24px;
+	background: linear-gradient(to right, #00e6e6, #0077ff);
+	border: none;
+	border-radius: 25px;
+	color: #000;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.button-login:hover {
+	background: linear-gradient(to right, #0077ff, #00e6e6);
+	transform: scale(1.05);
+}
+
+.button-login svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
+}
+
 .input-field-search::placeholder {
 	color: #a2a2a2;
 }

@@ -25,7 +25,7 @@ const AddNotePopup = ({ toggleAddForm }) => {
 
 		try {
 			const { data } = await axios.post(
-				"http://localhost:4000/api/notes",
+				"https://organizeme-7l2v.onrender.com/api/notes",
 				{
 					title,
 					content,

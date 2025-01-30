@@ -17,7 +17,7 @@ const Navbar = () => {
 		e.preventDefault();
 		try {
 			axios.post(
-				"http://localhost:4000/api/users/logout",
+				"https://organizeme-7l2v.onrender.com/api/users/logout",
 				{},
 				{ withCredentials: true }
 			);
