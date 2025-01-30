@@ -66,32 +66,17 @@ export const login = async (req, res, next) => {
 	}
 };
 
-export const logout = (req, res, next) => {
+export const checkAuth = async (req, res, next) => {
 	try {
-		res.status(200).json({ message: "Logged out successfully" });
-	} catch (error) {
-		next(error);
-		console.log(error);
-	}
-};
-
-export const verifyToken = (req, res, next) => {
-	try {
-		const authHeader = req.headers.authorization;
-
-		if (!authHeader || !authHeader.startsWith("Bearer ")) {
-			throw createHttpError(401, "Unauthorized");
+		const user = await User.findById(req.userId);
+		if (!user) {
+			throw createHttpError(400, "User not found");
 		}
 
-		const token = authHeader.split(" ")[1];
-		const decoded = jwt.verify(token, process.env.SECRET_KEY);
-
-		if (!decoded) {
-			throw createHttpError(401, "Unauthorized");
-		}
-
-		req.userId = decoded.userId;
-		next();
+		res.status(200).json({
+			success: true,
+			user: { ...user._doc, password: undefined },
+		});
 	} catch (error) {
 		next(error);
 	}

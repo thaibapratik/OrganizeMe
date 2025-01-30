@@ -251,11 +251,6 @@ button {
 }
 
 @media (max-width: 768px) {
-	.form-container {
-		padding: 1.5rem;
-		margin: 1.5rem;
-	}
-
 	.login-heading {
 		font-size: 1.75rem;
 	}
@@ -268,7 +263,7 @@ button {
 @media (max-width: 480px) {
 	.form-container {
 		padding: 1.2rem;
-		margin: 1rem;
+		/* margin: 1rem; */
 	}
 
 	.login-heading {
