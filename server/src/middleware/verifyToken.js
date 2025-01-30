@@ -2,7 +2,6 @@ import createHttpError from "http-errors";
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
-	console.log("Cookie received: ", req.cookies);
 	try {
 		const token = req.cookies.jwt;
 
