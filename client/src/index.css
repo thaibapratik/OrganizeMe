@@ -1206,6 +1206,10 @@ option {
 	.notes-heading h3 {
 		font-size: 1rem;
 	}
+
+	body {
+		zoom: 0.7;
+	}
 }
 
 label {

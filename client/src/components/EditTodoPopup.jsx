@@ -62,7 +62,11 @@ const EditTodoPopup = ({
 					priority,
 					date,
 				},
-				{ headers: `Bearer ${token}` }
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 
 			dispatch({
