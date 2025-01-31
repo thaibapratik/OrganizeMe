@@ -19,9 +19,10 @@ const Home = () => {
 				<div className="hero-content">
 					<h1>Organize Notes & Tasks with Ease</h1>
 					<p className="hero-subtitle">
-						Create, manage, and organize your notes and tasks into
-						folders. Stay productive with powerful organization
-						tools and seamless synchronization across all devices.
+						Create, manage, and organize your notes and tasks with
+						authorization. Stay productive with powerful
+						organization tools and seamless synchronization across
+						all devices.
 					</p>
 					<div className="cta-buttons">
 						<Link to="/signup" className="cta-primary">
